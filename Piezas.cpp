@@ -48,6 +48,31 @@ void Piezas::reset()
 **/ 
 Piece Piezas::dropPiece(int column)
 {
+	Piece prev_piece = turn;
+
+	//toggle turn
+	if (turn == X)
+	{
+		turn = O;
+	}
+	else 
+	{
+		turn = X;
+	}
+
+	if (column < 0 || column >= BOARD_COLS)
+	{
+		return Invalid;
+	}
+
+	for (int i = BOARD_ROWS - 1; i >= 0; i--)
+	{
+		if (board[i][column] == Blank)
+		{
+			board[i][column] = prev_piece;
+			return board[i][column];
+		}
+	}
     return Blank;
 }
 
