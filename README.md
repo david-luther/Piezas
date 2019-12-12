@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/david-luther/Piezas.svg?branch=master)](https://travis-ci.org/david-luther/Piezas)
+
+[![Coverage Status](https://coveralls.io/repos/github/david-luther/Piezas/badge.svg?branch=master)](https://coveralls.io/github/david-luther/Piezas?branch=master)
+
 # Piezas
 
 ## Associated Enumerated Types
