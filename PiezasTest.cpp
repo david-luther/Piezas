@@ -79,7 +79,7 @@ TEST(PiezasTest, dropPieceFullReset)
 	ASSERT_EQ(pieza.dropPiece(2), O);
 }
 
-TEST(Piezas, pieceAtEmptyBoard)
+TEST(PiezasTest, pieceAtEmptyBoard)
 {
 	Piezas pieza;
 
@@ -89,7 +89,7 @@ TEST(Piezas, pieceAtEmptyBoard)
 	ASSERT_EQ(pieza.pieceAt(2,0), Blank);
 }
 
-TEST(Piezas, pieceAtInvalidVals)
+TEST(PiezasTest, pieceAtInvalidVals)
 {
 	Piezas pieza;
 
@@ -100,7 +100,7 @@ TEST(Piezas, pieceAtInvalidVals)
 	ASSERT_EQ(pieza.pieceAt(3,4), Invalid);
 }
 
-TEST(Piezas, pieceAtOneDrop)
+TEST(PiezasTest, pieceAtOneDrop)
 {
 	Piezas pieza;
 	pieza.dropPiece(2);
@@ -109,7 +109,7 @@ TEST(Piezas, pieceAtOneDrop)
 	ASSERT_EQ(pieza.pieceAt(0,0), Blank);
 }
 
-TEST(Piezas, pieceAtFullCol)
+TEST(PiezasTest, pieceAtFullCol)
 {
 	Piezas pieza;
 
@@ -122,7 +122,7 @@ TEST(Piezas, pieceAtFullCol)
 	ASSERT_EQ(pieza.pieceAt(1,0), X);
 }
 
-TEST(Piezas, pieceAtAfterReset)
+TEST(PiezasTest, pieceAtAfterReset)
 {
 	Piezas pieza;
 
