@@ -55,6 +55,26 @@ TEST(PiezasTest, dropPieceFullCol)
 	pieza.dropPiece(2);
 	pieza.dropPiece(2);
 
+	ASSERT_EQ(pieza.dropPiece(2), Blank);
+}
+
+TEST(PiezasTest, dropPieceFullCol)
+{
+	Piezas pieza;
+	pieza.dropPiece(2);
+	pieza.dropPiece(2);
+	pieza.dropPiece(2);
 
 	ASSERT_EQ(pieza.dropPiece(2), Blank);
+}
+
+TEST(PiezasTest, dropPieceFullReset)
+{
+	Piezas pieza;
+	pieza.dropPiece(2);
+	pieza.dropPiece(2);
+	pieza.dropPiece(2);
+	pieza.reset();
+
+	ASSERT_EQ(pieza.dropPiece(2), O);
 }
