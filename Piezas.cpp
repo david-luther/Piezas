@@ -89,11 +89,11 @@ Piece Piezas::dropPiece(int column)
 **/
 Piece Piezas::pieceAt(int row, int column)
 {
-	if (row < 0 || row >= BOARD_ROWS || column < -1 || column >= BOARD_COLS)
+	if (row < 0 || row >= BOARD_ROWS || column < 0 || column >= BOARD_COLS)
 	{
 		return Invalid;
 	}
-	return board[BOARD_ROWS-row][column];
+	return board[2-row][column];
 }
 
 /**
@@ -107,5 +107,15 @@ Piece Piezas::pieceAt(int row, int column)
 **/
 Piece Piezas::gameState()
 {
+	for (int i = 0; i < BOARD_ROWS; i++)
+	{
+		for (int j = 0; j < BOARD_ROWS; j++)
+		{
+			if (board[i][j] == Blank)
+			{
+				return Invalid;
+			}
+		}
+	}
     return Blank;
 }
