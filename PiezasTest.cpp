@@ -167,7 +167,7 @@ TEST(PiezasTest, dropPieceFullRowAfterReset)
 	pieza.reset();
 	pieza.dropPiece(0);
 	pieza.dropPiece(0);
-	pieza.dropPiece(0)
+	pieza.dropPiece(0);
 
 	ASSERT_EQ(pieza.pieceAt(2,0), O);
 }
