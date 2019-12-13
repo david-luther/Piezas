@@ -116,6 +116,24 @@ TEST(PiezasTest, pieceAtAfterReset)
 {
 	Piezas pieza;
 
-	pieza.drop(0);
+	pieza.dropPiece(1);
+	ASSERT_EQ(pieza.pieceAt(0,1), X);
 
+	pieza.reset();
+	ASSERT_EQ(pieza.pieceAt(0,1), Blank);
+
+	pieza.dropPiece(1);
+	ASSERT_EQ(pieza.pieceAt(0,1), O);
+}
+
+TEST(PiezasTest, dropPieceFullRowAfterReset)
+{
+	Piezas pieza;
+
+	pieza.dropPiece(0);
+	pieza.reset();
+	pieza.dropPiece(0);
+	pieza.dropPiece(0);
+
+	ASSERT_EQ(pieza.dropPiece(0), O);
 }
