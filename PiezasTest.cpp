@@ -109,7 +109,7 @@ TEST(PiezasTest, pieceAtFullCol)
 
 	ASSERT_EQ(pieza.pieceAt(2,1), X);
 	ASSERT_EQ(pieza.pieceAt(1,1), O);
-	ASSERT_EQ(pieza.pieceAt(1,0), X);
+	ASSERT_EQ(pieza.pieceAt(0,1), X);
 }
 
 TEST(PiezasTest, pieceAtAfterReset)
