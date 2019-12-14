@@ -282,5 +282,5 @@ Piece Piezas::gameState()
 	{
 		return Blank;
 	}
-	return maxX > maxO ? maxX : maxO;
+	return maxX > maxO ? X : O;
 }
