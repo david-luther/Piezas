@@ -237,15 +237,15 @@ TEST(PiezasTest, gameStateAlternatingTie)
 
 	for (int i = 0; i < BOARD_COLS; i++)
 	{
-		dropPiece(i);
+		pieza.dropPiece(i);
 	}
 	for (int i = BOARD_COLS-1; i >= 0; i--)
 	{
-		dropPiece(i);
+		pieza.dropPiece(i);
 	}
 	for (int i = 0; i < BOARD_COLS; i++)
 	{
-		dropPiece(i);
+		pieza.dropPiece(i);
 	}
 
 	ASSERT_EQ(pieza.gameState(), Blank);
