@@ -178,10 +178,10 @@ Piece Piezas::gameState()
 			}
 		}
 	}
-
-	if (maxX == maxO)
+	if (foundX != foundO)
 	{
-		return Blank;
+		return foundX > foundO ? X : O;
 	}
-	return maxX > maxO ? X : O;
+
+	return Blank;
 }
