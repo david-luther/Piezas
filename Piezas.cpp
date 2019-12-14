@@ -107,165 +107,8 @@ Piece Piezas::pieceAt(int row, int column)
 **/
 Piece Piezas::gameState()
 {
-	int maxX = 1;
-	int maxO = 1;
-
-	for (int i = 0; i < BOARD_ROWS; i++)
-	{
-		if (board[i][0] != Blank && board[i][0] == board[i][1] && board[i][0] == board[i][2] && board[i][0] == board[i][3])
-		{
-			if (board[i][0] == X)
-			{
-				maxX = 4;
-			}
-			else if (board[i][0] == O)
-			{
-				maxO = 4;
-			}
-		}
-		else if (board[i][0] == board[i][1] && board[i][0] == board[i][2])
-		{
-			if (board[i][0] == X)
-			{
-				if (maxX < 3)
-				{
-					maxX = 3;
-				}
-			}
-			else if (board[i][0] == O)
-			{
-				if (maxO < 3)
-				{
-					maxO = 3;
-				}
-			}
-		}
-		else if (board[i][1] == board[i][2] && board[i][1] == board[i][3])
-		{
-			if (board[i][1] == X)
-			{
-				if (maxX < 3)
-				{
-					maxX = 3;
-				}
-			}
-			else if (board[i][1] == O)
-			{
-				if (maxO < 3)
-				{
-					maxO = 3;
-				}
-			}
-		}
-		else if (board[i][0] == board[i][1])
-		{
-			if (board[i][0] == X)
-			{
-				if (maxX < 2)
-				{
-					maxX = 2;
-				}
-			}
-			else if (board[i][0] == O)
-			{
-				if (maxO < 2)
-				{
-					maxO = 2;
-				}
-			}
-		}
-		else if (board[i][1] == board[i][2])
-		{
-			if (board[i][1] == X)
-			{
-				if (maxX < 2)
-				{
-					maxX = 2;
-				}
-			}
-			else if (board[i][1] == O)
-			{
-				if (maxO < 2)
-				{
-					maxO = 2;
-				}
-			}
-
-		}
-		else if (board[i][2] == board[i][3])
-		{
-			if (board[i][2] == X)
-			{
-				if (maxX < 2)
-				{
-					maxX = 2;
-				}
-			}
-			else if (board[i][2] == O)
-			{
-				if (maxO < 2)
-				{
-					maxO = 2;
-				}
-			}
-
-		}
-	}
-
-	for (int i = 0; i < BOARD_COLS; i++)
-	{
-		if (board[0][i] == board[1][i] && board[0][i] == board[2][i])
-		{
-			if (board[0][i] == X)
-			{
-				if (maxX < 3)
-				{
-					maxX = 3;
-				}
-			}
-			else if (board[0][i] == O)
-			{
-				if (maxO < 3)
-				{
-					maxO = 3;
-				}
-			}
-		}
-		else if (board[0][i] == board[1][i])
-		{
-			if (board[0][i] == X)
-			{
-				if (maxX < 2)
-				{
-					maxX = 2;
-				}
-			}
-			else if (board[0][i] == O)
-			{
-				if (maxO < 2)
-				{
-					maxO = 2;
-				}
-			}
-		}
-		else if (board[1][i] == board[2][i])
-		{
-			if (board[1][i] == X)
-			{
-				if (maxX < 2)
-				{
-					maxX = 2;
-				}
-			}
-			else if (board[1][i] == O)
-			{
-				if (maxO < 2)
-				{
-					maxO = 2;
-				}
-			}
-		}
-	}
+	int foundX = 0;
+	int foundO = 0;
 
 	for (int i = 0; i < BOARD_ROWS; i++)
 	{
@@ -274,6 +117,64 @@ Piece Piezas::gameState()
 			if (board[i][j] == Blank)
 			{
 				return Invalid;
+			}
+		}
+	}
+
+	for (int i = 0; i < BOARD_ROWS; i++)
+	{
+		if (board[i][0] == board[i][1] && board[i][0] == board[i][2] && board[i][0] == board[i][3])
+		{
+			if (board[i][0] == X)
+			{
+				foundX = 1;
+			}
+			else if (board[i][0] == O)
+			{
+				foundO = 1;
+			}
+		}
+	}
+	if (foundX != foundO)
+	{
+		return foundX > foundO ? X : O;
+	}
+	foundX = 0;
+	foundO = 0;
+
+	for (int i = 0; i < BOARD_ROWS; i++)
+	{
+		if (board[i][0] == board[i][1] && board[i][0] == board[i][2])
+		{
+			if (board[i][0] == X)
+			{
+				foundX = 1;
+			}
+			else if (board[i][0] == O)
+			{
+				foundO = 1;
+			}
+		}
+		else if (board[i][1] == board[i][2] && board[i][1] == board[i][3])
+		{
+			if (board[i][1] == X)
+			{
+				foundX = 1;
+			}
+			else if (board[i][1] == O)
+			{
+				foundO = 1;
+			}
+		}
+		else if (board[0][i] == board[1][i] && board[0][i] == board[2][i])
+		{
+			if (board[0][i] == X)
+			{
+				foundX = 1;
+			}
+			else if (board[0][i] == O)
+			{
+				foundO = 1;
 			}
 		}
 	}
