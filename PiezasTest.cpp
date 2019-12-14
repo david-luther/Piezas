@@ -390,3 +390,23 @@ TEST(PiezasTest, gameStateWinWithTwo)
 
 	ASSERT_EQ(pieza.gameState(), X);
 }
+
+TEST(PiezasTest, gameStateBothTwosTie)
+{
+	Piezas pieza;
+
+	pieza.dropPiece(0);
+	pieza.dropPiece(2);
+	pieza.dropPiece(1);
+	pieza.dropPiece(3);
+	pieza.dropPiece(2);
+	pieza.dropPiece(0);
+	pieza.dropPiece(3);
+	pieza.dropPiece(1);
+	pieza.dropPiece(2);
+	pieza.dropPiece(0);
+	pieza.dropPiece(3);
+	pieza.dropPiece(1);
+
+	ASSERT_EQ(pieza.gameState(), Blank);
+}
