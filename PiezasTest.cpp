@@ -310,3 +310,23 @@ TEST(PiezasTest, gameStateColAndRowWithThreeTie)
 
 	ASSERT_EQ(pieza.gameState(), Blank);
 }
+
+TEST(PiezasTest, gameStateColWithThreeXWin)
+{
+	Piezas pieza;
+
+	pieza.dropPiece(1);
+	pieza.dropPiece(0);
+	pieza.dropPiece(1);
+	pieza.dropPiece(2);
+	pieza.dropPiece(0);
+	pieza.dropPiece(3);
+	pieza.dropPiece(1);
+	pieza.dropPiece(3);
+	pieza.dropPiece(3);
+	pieza.dropPiece(2);
+	pieza.dropPiece(2);
+	pieza.dropPiece(0);
+
+	ASSERT_EQ(pieza.gameState(), X);
+}
