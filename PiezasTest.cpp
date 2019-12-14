@@ -82,7 +82,7 @@ TEST(PiezasTest, pieceAtEmptyBoard)
 	}
 }
 
-TEST(PiezasTest, pieceAtAfterReset)
+TEST(PiezasTest, pieceAtAfterResetMultipleDrops)
 {
 	Piezas pieza;
 
@@ -153,6 +153,15 @@ TEST(PiezasTest, pieceAtTwoDrops)
 	pieza.dropPiece(1);
 
 	ASSERT_EQ(pieza.pieceAt(0,1), O);
+}
+
+TEST(PiezasTest, pieceAtTwoDropsSameCol)
+{
+	Piezas pieza;
+	pieza.dropPiece(0);
+	pieza.dropPiece(0);
+
+	ASSERT_EQ(pieza.pieceAt(1,0), O);
 }
 
 TEST(PiezasTest, pieceAtFullCol)
