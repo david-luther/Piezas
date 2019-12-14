@@ -82,6 +82,26 @@ TEST(PiezasTest, pieceAtEmptyBoard)
 	}
 }
 
+TEST(PiezasTest, pieceAtAfterReset)
+{
+	Piezas pieza;
+
+	pieza.dropPiece(1);
+	pieza.dropPiece(0);
+	pieza.dropPiece(1);
+	pieza.dropPiece(1);
+	pieza.dropPiece(2);
+	pieza.reset();
+
+	for (int i = 0; i < BOARD_ROWS; i++)
+	{
+		for (int j = 0; j < BOARD_COLS; j++)
+		{
+			ASSERT_EQ(pieza.pieceAt(i,j), Blank);
+		}
+	}
+}
+
 TEST(PiezasTest, pieceAtTestLimits)
 {
 	Piezas pieza;
@@ -124,6 +144,15 @@ TEST(PiezasTest, pieceAtOneDrop)
 	pieza.dropPiece(2);
 
 	ASSERT_EQ(pieza.pieceAt(0,2), X);
+}
+
+TEST(PiezasTest, pieceAtTwoDrops)
+{
+	Piezas pieza;
+	pieza.dropPiece(2);
+	pieza.dropPiece(1);
+
+	ASSERT_EQ(pieza.pieceAt(0,1), O);
 }
 
 TEST(PiezasTest, pieceAtFullCol)
