@@ -182,6 +182,41 @@ Piece Piezas::gameState()
 	{
 		return foundX > foundO ? X : O;
 	}
+	foundX = 0;
+	foundO = 0;
+
+	for (int i = 0; i < BOARD_ROWS; i++)
+	{
+		for (int j = 0; j < BOARD_COLS; j++)
+		{
+			if (j < BOARD_COLS-1 && board[i][j] == board[i][j+1])
+			{
+				if (board[i][j] == X)
+				{
+					foundX = 1;
+				}
+				else if (board[i][j] == O)
+				{
+					foundO = 1;
+				}
+			}
+			else if (i < BOARD_ROWS-1 && board[i][j] == board[i+1][j])
+			{
+				if (board[i][j] == X)
+				{
+					foundX = 1;
+				}
+				else if (board[i][j] == O)
+				{
+					foundO = 1;
+				}
+			}
+		}
+	}
+	if (foundX != foundO)
+	{
+		return foundX > foundO ? X : O;
+	}
 
 	return Blank;
 }
