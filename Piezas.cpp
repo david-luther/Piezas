@@ -212,6 +212,61 @@ Piece Piezas::gameState()
 		}
 	}
 
+	for (int i = 0; i < BOARD_COLS; i++)
+	{
+		if (board[0][i] == board[1][i] && board[0][i] == board[2][i])
+		{
+			if (board[0][i] == X)
+			{
+				if (maxX < 3)
+				{
+					maxX = 3;
+				}
+			}
+			else if (board[0][i] == O)
+			{
+				if (maxO < 3)
+				{
+					maxO = 3;
+				}
+			}
+		}
+		else if (board[0][i] == board[1][i])
+		{
+			if (board[0][i] == X)
+			{
+				if (maxX < 2)
+				{
+					maxX = 2;
+				}
+			}
+			else if (board[0][i] == O)
+			{
+				if (maxO < 2)
+				{
+					maxO = 2;
+				}
+			}
+		}
+		else if (board[1][i] == board[2][i])
+		{
+			if (board[1][i] == X)
+			{
+				if (maxX < 2)
+				{
+					maxX = 2;
+				}
+			}
+			else if (board[1][i] == O)
+			{
+				if (maxO < 2)
+				{
+					maxO = 2;
+				}
+			}
+		}
+	}
+
 	for (int i = 0; i < BOARD_ROWS; i++)
 	{
 		for (int j = 0; j < BOARD_ROWS; j++)
@@ -222,5 +277,10 @@ Piece Piezas::gameState()
 			}
 		}
 	}
-    return Blank;
+
+	if (maxX == maxO)
+	{
+		return Blank;
+	}
+	return maxX > maxO ? maxX : maxO;
 }
