@@ -135,7 +135,11 @@ Piece Piezas::gameState()
 			}
 		}
 	}
-	if (foundX != foundO)
+	if (foundX == 1 && foundO == 1)
+	{
+		return Blank;
+	}
+	else if (foundX != foundO)
 	{
 		return foundX > foundO ? X : O;
 	}
@@ -178,7 +182,11 @@ Piece Piezas::gameState()
 			}
 		}
 	}
-	if (foundX != foundO)
+	if (foundX == 1 && foundO == 1)
+	{
+		return Blank;
+	}
+	else if (foundX != foundO)
 	{
 		return foundX > foundO ? X : O;
 	}
