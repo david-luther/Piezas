@@ -217,6 +217,16 @@ TEST(PiezasTest, gameStateEmptyBoard)
 	ASSERT_EQ(pieza.gameState(), Invalid);
 }
 
+TEST(PiezasTest, gameStatePartialBoard)
+{
+	Piezas pieza;
+
+	pieza.dropPiece(0);
+	pieza.dropPiece(2);
+
+	ASSERT_EQ(pieza.gameState(), Invalid);
+}
+
 TEST(PiezasTest, gameStateFullColumnsTie)
 {
 	Piezas pieza;
@@ -230,6 +240,22 @@ TEST(PiezasTest, gameStateFullColumnsTie)
 	}
 
 	ASSERT_EQ(pieza.gameState(), Blank);
+}
+
+TEST(PiezasTest, gameStateAfterReset)
+{
+	Piezas pieza;
+
+	for (int i = 0; i < BOARD_COLS; i++)
+	{
+		for (int j = 0; j < BOARD_ROWS; j++)
+		{
+			pieza.dropPiece(i);
+		}
+	}
+	pieza.reset();
+
+	ASSERT_EQ(pieza.gameState(), Invalid);
 }
 
 TEST(PiezasTest, gameStateFullHorizontalsForBothTie)
