@@ -179,7 +179,7 @@ TEST(PiezasTest, gameStateEmptyBoard)
 	ASSERT_EQ(pieza.gameState(), Invalid);
 }
 
-TEST(PiezasTest, gameStateFullBoardTie)
+TEST(PiezasTest, gameStateFullColumnsTie)
 {
 	Piezas pieza;
 
@@ -229,4 +229,44 @@ TEST(PiezasTest, gameStateFullHorizontalXWinner)
 	pieza.dropPiece(3);
 
 	ASSERT_EQ(pieza.gameState(), X);
+}
+
+TEST(PiezasTest, gameStateAlternatingTie)
+{
+	Piezas pieza;
+
+	for (int i = 0; i < BOARD_COLS; i++)
+	{
+		dropPiece(i);
+	}
+	for (int i = BOARD_COLS-1; i >= 0; i--)
+	{
+		dropPiece(i);
+	}
+	for (int i = 0; i < BOARD_COLS; i++)
+	{
+		dropPiece(i);
+	}
+
+	ASSERT_EQ(pieza.gameState(), Blank);
+}
+
+TEST(PiezasTest, gameStateColsWithThreeTie)
+{
+	Piezas pieza;
+
+	pieza.dropPiece(0);
+	pieza.dropPiece(0);
+	pieza.dropPiece(1);
+	pieza.dropPiece(1);
+	pieza.dropPiece(2);
+	pieza.dropPiece(2);
+	pieza.dropPiece(0);
+	pieza.dropPiece(3);
+	pieza.dropPiece(3);
+	pieza.dropPiece(1);
+	pieza.dropPiece(2);
+	pieza.dropPiece(3);
+
+	ASSERT_EQ(pieza.gameState(), Blank);
 }
