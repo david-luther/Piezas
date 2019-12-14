@@ -335,7 +335,7 @@ TEST(PiezasTest, gameStateColsWithThreeTie)
 	ASSERT_EQ(pieza.gameState(), Blank);
 }
 
-TEST(PiezasTest, gameStateRowWithThreeWinO)
+TEST(PiezasTest, gameStateColWithThreeWinO)
 {
 	Piezas pieza;
 
