@@ -171,3 +171,25 @@ TEST(PiezasTest, dropPieceFullRowAfterReset)
 
 	ASSERT_EQ(pieza.pieceAt(2,0), O);
 }
+
+TEST(PiezasTest, gameStateEmptyBoard)
+{
+	Piezas pieza;
+
+	ASSERT_EQ(pieza.gameState(), Invalid);
+}
+
+TEST(PiezasTest, gameStateFullBoard)
+{
+	Piezas pieza;
+
+	for (int i = 0; i < BOARD_COLS; i++)
+	{
+		for (int j = 0; j < BOARD_ROWS; j++)
+		{
+			pieza.dropPiece(i);
+		}
+	}
+
+	ASSERT_EQ(pieza.gameState(), Blank);
+}
